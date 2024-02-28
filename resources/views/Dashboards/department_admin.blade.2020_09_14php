@@ -1,0 +1,450 @@
+@extends('layout.layout')
+@section('title','Dashboard')
+@section('content')
+<div class="row">
+  <div class="col-md-4 col-vlg-4 col-sm-6">
+    <div class="tiles green m-b-10">
+      <div class="tiles-body">
+        <div class="controller">
+          <a href="javascript:;" class="reload"></a>
+          <a href="javascript:;" class="remove"></a>
+        </div>
+        <div class="tiles-title text-black"></div>
+        <div class="widget-stats">
+          <div class="wrapper transparent">
+            <a href="{{url('users')}}" style="text-decoration: none;color:white">
+            <span class="item-title">All</span> <span class="item-count animate-number semi-bold" data-value="{{$user}}" data-animation-duration="700"></span></a>    
+          </div>
+        </div>
+        <div class="widget-stats">
+          <div class="wrapper transparent">
+            <a href="{{url('employee/present_employee')}}" style="text-decoration: none;color:white">
+            <span class="item-title">Present</span> <span class="item-count animate-number semi-bold" data-value="{{$daily_present_count[0]->present + $daily_late_count[0]->late}}" data-animation-duration="700"></span></a>
+          </div>
+        </div>
+        <div class="widget-stats">
+          <div class="wrapper transparent">
+            <a href="{{url('employee/late_employee')}}" style="text-decoration: none;color:white">
+            <span class="item-title">Late</span> <span class="item-count animate-number semi-bold" data-value="{{$daily_late_count[0]->late}}" data-animation-duration="700"></span></a>
+          </div>
+        </div>
+        <div class="widget-stats">
+          <div class="wrapper last">
+            <a href="{{url('employee/absent_employee')}}" style="text-decoration: none;color:white">
+            <span class="item-title">Absent</span> <span class="item-count animate-number semi-bold" data-value="{{   $daily_absent_count}}" data-animation-duration="700"></span></a>
+          </div>
+        </div>
+        <div class="progress transparent progress-small no-radius m-t-20" style="width:90%">
+          <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="64.8%" style="width: 64.8%;"></div>
+        </div>
+        <div class="description"> <span class="text-white mini-description ">4% higher <span class="blend">than last month</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-vlg-4 col-sm-6">
+    <div class="tiles blue m-b-10">
+      <div class="tiles-body">
+        <div class="controller">
+          <a href="javascript:;" class="reload"></a>
+          <a href="javascript:;" class="remove"></a>
+        </div>
+        <div class="widget-stats">
+          <div class="wrapper transparent">
+            <a href="{{url('employee/employee_leave')}}" style="text-decoration: none;color:white">
+            <span class="item-title">Leave</span> <span class="item-count animate-number semi-bold" data-value="{{$daily_leave_count[0]->leave_title}}" data-="" animation-duration="700"></span>
+          </a>
+          </div>
+        </div>
+        <div class="widget-stats">
+          <div class="wrapper transparent">
+            <a href="{{url('employee/employee_attach')}}" style="text-decoration: none;color:white">
+            <span class="item-title">Attach</span> <span class="item-count animate-number semi-bold" data-value="{{$daily_attach_count[0]->attach_count}}" data-animation-duration="700">551</span>
+            </a>
+          </div>
+        </div>
+        <div class="widget-stats ">
+          <div class="wrapper last">
+            <a href="{{url('employee/employee_short_leave')}}" style="text-decoration: none;color:white">
+            <span class="item-title">Short Leave</span> <span class="item-count animate-number semi-bold" data-value="{{$short_leave_count[0]->short_leave}}" data-animation-duration="700"></span>
+            </a>
+          </div>
+        </div>
+        <div class="progress transparent progress-small no-radius m-t-20" style="width:90%">
+          <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="54%" style="width: 54%;"></div>
+        </div>
+        <div class="description"> <span class="text-white mini-description ">4% higher <span class="blend">than last month</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-vlg-4 col-sm-6">
+    <div class="tiles purple m-b-10">
+      <div class="tiles-body">
+        <div class="controller">
+          <a href="javascript:;" class="reload"></a>
+          <a href="javascript:;" class="remove"></a>
+        </div>
+        <div class="widget-stats">
+          <a href="{{url('employee/employee_coperator')}}" style="text-decoration: none;color:white">
+          <div class="wrapper transparent">
+            <span class="item-title">C.O.</span> <span class="item-count animate-number semi-bold" data-value="{{$comp_oper}}" data-animation-duration="700"></span>
+          </div>
+        </a>
+        </div>
+        <div class="widget-stats">
+          <div class="wrapper transparent">
+          <a href="{{url('employee/employee_director')}}" style="text-decoration: none;color:white">
+            <span class="item-title">D. </span> <span class="item-count animate-number semi-bold" data-value="{{$director}}" data-animation-duration="700"></span>
+          </div>
+         </a>
+        </div>
+        <div class="widget-stats ">
+          <div class="wrapper last">
+            <a href="{{url('employee/deputy_director')}}" style="text-decoration: none;color:white">
+            <span class="item-title">D.D</span> <span class="item-count animate-number semi-bold" data-value="{{$dupty_director}}" data-animation-duration="700"></span>
+          </a>
+          </div>
+        </div>
+        <div class="progress transparent progress-small no-radius m-t-20" style="width:90%">
+          <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="90%" style="width: 90%;"></div>
+        </div>
+        <div class="description"> <span class="text-white mini-description ">4% higher <span class="blend">than last month</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+    <div class="card">
+     <!--  <button id="btn2" class="btn-primary"><i class="icon-long-arrow-right"></i></button> -->
+     <div id="averagechart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+   </div>
+ </div>
+ <div class="col-md-6 col-sm-6 col-xs-6  col-lg-6">
+  
+ </div>
+</div>
+<div class="row" style="margin-top:10px">
+  <div class="col-md-6 col-sm-6 col-xs-6  col-lg-6">
+    <div class="card">
+     <!--  <button id="btn2" class="btn-primary"><i class="icon-long-arrow-right"></i></button> -->
+     <div id="gendergraph" style="min-width: 310px; height: 400px; margin: 0 auto">
+     </div>
+   </div>
+   
+ </div>
+ 
+   <div class="col-md-6 col-sm-6 col-xs-6  col-lg-6">
+    <div class="card">
+     <div id="pie" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+     
+   </div>
+                         <!--  <div class="card">
+                            <div id="leavestatus" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                             
+                          </div> -->
+    </div>                
+      </div>
+
+       </div>
+                  <script src="{{url('design/graph/highcharts.js')}}"></script>
+                  <script src="{{url('design/graph/data.js')}}"></script>
+                  <script src="{{url('design/graph/drilldown.js')}}"></script>
+                  <!-- <script type="text/javascript" src="{{url('design/charts/highcharts.js')}}"></script>       -->  
+                  <!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
+                  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                  <!-- <script src="https://code.highcharts.com/modules/export-data.js"></script> -->
+                  <script src="{{url('design/js/jquery-1.8.2.min.js')}}"></script>
+                  <script type="text/javascript">
+                    $(document).ready(function(){
+                      var day_1={{$first_day_of_weekly_graph_absent}};
+                      var day_2={{$second_day_of_weekly_graph_absent}};
+                      var day_3={{$third_day_of_weekly_graph_absent}};
+                      var day_4={{$fourth_day_of_weekly_graph_absent}};
+                      var day_5={{$fifth_day_of_weekly_graph_absent}};
+                      var day_6={{$sixth_day_of_weekly_graph_absent}};
+
+
+                      var pre_day_1={{$first_day_of_weekly_graph[0]->present + $first_day_of_weekly_graph[0]->late}};
+                      var pre_day_2={{$second_day_of_weekly_graph[0]->present + $second_day_of_weekly_graph[0]->late}};
+                      var pre_day_3={{$third_day_of_weekly_graph[0]->present+$third_day_of_weekly_graph[0]->late  }};
+                      var pre_day_4={{$fourth_day_of_weekly_graph[0]->present + $fourth_day_of_weekly_graph[0]->late}};
+                      var pre_day_5={{$fifth_day_of_weekly_graph[0]->present}};
+                      var pre_day_6={{$sixth_day_of_weekly_graph[0]->present + $sixth_day_of_weekly_graph[0]->late}};
+
+                      var late_day_1={{$first_day_of_weekly_graph[0]->late}};
+                      var late_day_2={{$second_day_of_weekly_graph[0]->late}};
+                      var late_day_3={{$third_day_of_weekly_graph[0]->late}};
+                      var late_day_4={{$fourth_day_of_weekly_graph[0]->late}};
+                      var late_day_5={{$fifth_day_of_weekly_graph[0]->late}};
+                      var late_day_6={{$sixth_day_of_weekly_graph[0]->late}};
+                      
+                      
+                      var attach_day_1={{$first_day_of_weekly_graph_attach[0]->attach_count}};
+                      var attach_day_2={{$second_day_of_weekly_graph_attach[0]->attach_count}};
+                      var attach_day_3={{$third_day_of_weekly_graph_attach[0]->attach_count}};
+                      var attach_day_4={{$fourth_day_of_weekly_graph_attach[0]->attach_count}};
+                      var attach_day_5={{$fifth_day_of_weekly_graph_attach[0]->attach_count}};
+                      var attach_day_6={{$sixth_day_of_weekly_graph_attach[0]->attach_count}};
+
+                      var leave_day_1={{$first_day_of_weekly_graph_leave[0]->leave_title}};
+                      var leave_day_2={{$second_day_of_weekly_graph_leave[0]->leave_title}};
+                      var leave_day_3={{$third_day_of_weekly_graph_leave[0]->leave_title}};
+                      var leave_day_4={{$fourth_day_of_weekly_graph_leave[0]->leave_title}};
+                      var leave_day_5={{$fifth_day_of_weekly_graph_leave[0]->leave_title}};
+                      var leave_day_6={{$sixth_day_of_weekly_graph_leave[0]->leave_title}};
+                      
+                      var total_absent_in_week={{$total_absent_in_week}};
+                      var total_late_in_week={{$total_late_in_week}};
+                    var total_present_in_week = {{$total_present_in_week + $total_late_in_week}};
+                      Highcharts.chart('averagechart', {
+                        title: {
+                          text: 'Weekly Attendance Status'
+                        },
+                        xAxis: {
+                          categories: ['Monday', 'Tuesday', 'Wednesday','Thursday','Friday','Saturday']
+                        },
+                        labels: {
+                          items: [{
+                            html: 'This Week',
+                            style: {
+                              left: '50px',
+                              top: '18px',
+                              color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                            }
+                          }]
+                        },
+                        series: [{
+                          type: 'column',
+                          name: 'Present',
+                          data: [pre_day_1,pre_day_2,pre_day_3,pre_day_4,pre_day_5,pre_day_6]
+                        }, 
+                        {
+                          type: 'column',
+                          name: 'Absent',
+                          data: [day_1, day_2,day_3,day_4,day_5,day_6]
+                        }, 
+                        {
+                          type: 'column',
+                          name: 'Late',
+                          data: [late_day_1,late_day_2,late_day_3,late_day_4,late_day_5,late_day_6]
+                        }, 
+                        {
+                          type: 'column',
+                          name: 'Leave',
+                          data: [leave_day_1, leave_day_2,leave_day_3,leave_day_4,leave_day_5,leave_day_6]
+                        }, {
+                          type: 'column',
+                          name: 'Attach',
+                          data: [attach_day_1, attach_day_2,attach_day_3,attach_day_4,attach_day_5,attach_day_6]
+                        }, {
+                          type: 'spline',
+                          name: 'Average',
+                          data: [3, 2.67, 3, 6.33, 3.33],
+                          marker: {
+                            lineWidth: 2,
+                            lineColor: Highcharts.getOptions().colors[3],
+                            fillColor: 'white'
+                          }
+                        }, {
+                          type: 'pie',
+                          name: 'Weekly Status',
+                          data: [{
+                            name: 'Late',
+                            y:total_late_in_week,
+                            color: Highcharts.getOptions().colors[2] // Jane's color
+                          }, {
+                            name: 'Absent',
+                            y: total_absent_in_week,
+                            color: Highcharts.getOptions().colors[1] // John's color
+                          }, {
+                            name: 'Present',
+                            y: total_present_in_week,
+                            color: Highcharts.getOptions().colors[0] // Joe's color
+                          }],
+                          center: [100, 80],
+                          size: 100,
+                          showInLegend: false,
+                          dataLabels: {
+                            enabled: false
+                          }
+                        }]
+                      });  
+                    });
+                  </script>
+                  <script type="text/javascript">
+                    var total_attach ={{$daily_attach_count[0]->attach_count}};
+                    var total_leaves={{$daily_leave_count[0]->leave_title}};  
+                    var present={{$daily_present_count[0]->present +$daily_late_count[0]->late}};
+                    var absent={{$daily_absent_count}};
+                    var late={{$daily_late_count[0]->late}};
+                    var attach_emp={{$attach_employee}};
+                    // Create the chart
+                    Highcharts.chart('pie', {
+                      chart: {
+                        type: 'pie'
+                      },
+                      title: {
+                        text: 'Daily Wise Attendance'
+                      },
+                      plotOptions: {
+                        series: {
+                          dataLabels: {
+                            enabled: true,
+                            format: '{point.name}: {point.y:.1f}'
+                          }
+                        }
+                      },
+
+                      tooltip: {
+                        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b> of total<br/>'
+                      },
+
+                      series: [
+                      {
+                        name: "Attendance",
+                        colorByPoint: true,
+                        data: [
+                        {
+                          name: "Present",
+                          y: present,
+                          drilldown: "Present",
+                          
+                        },
+                        {
+                          name: "Absent",
+                          y: absent,
+                          drilldown: "Absent"
+                        },
+                        {
+                          name: "Leave",
+                          y: total_leaves,
+                          drilldown: "Leave"
+                        },
+                        {
+                          name: "Attach",
+                          y: total_attach,
+                          drilldown: "Attach"
+                        },
+                        {
+                          name: "Late",
+                          y: late,
+                          drilldown: "Late"
+                        },
+                        
+                        ]
+                      }
+                      ],
+                      drilldown: {
+                        series: [
+                        {
+                          name: "Present",
+                          id: "Present",
+                          data: [{
+                            y: present,
+                            color: '#9CE7F9'
+                          }, 
+                          ]
+                        },
+                        {
+                          name: "Absent",
+                          id: "Absent",
+                          data: [{
+                            y: absent,
+                            color: 'black'
+                          }, 
+                          ]
+                        },
+                        {
+                          name: "Leave",
+                          id: "Leave",
+                          data: [{
+                            y:total_leaves ,
+                            color: '#C9FF93'
+                          }, 
+                          ]
+                        },
+                        {
+                          name: "Attach",
+                          id: "Attach",
+                          data: [{
+                            y: total_attach,
+                            color: 'orange'
+                          }, 
+                          ]
+                        },
+                        {
+                          name: "Late",
+                          id: "Late",
+                          data: [{
+                            y: late,
+                            color: 'blue'
+                          }, 
+                          ]
+                        },
+
+                        
+                        ]
+                      }
+                    });
+                  </script>
+
+                  <?php 
+                  $depts=json_encode($gender_data->pluck('dept_names'));
+                  $male=json_encode($gender_data->pluck('male'));
+                  $female=json_encode($gender_data->pluck('female'));
+                  
+
+                  ?>
+                  <script type="text/javascript">
+                    Highcharts.chart('gendergraph', {
+
+                      chart: {
+                        type: 'column'
+                      },
+
+                      title: {
+                        text: 'Genders Wise Distribution'
+                      },
+
+                      xAxis: {
+                        categories:   <?php echo $depts ?> 
+                      },
+
+                      yAxis: {
+                        allowDecimals: false,
+                        min: 0,
+                        title: {
+                          text: 'Gender in Departments'
+                        }
+                      },
+
+                      tooltip: {
+                        formatter: function () {
+                          return '<b>' + this.x + '</b><br/>' +
+                          this.series.name + ': ' + this.y + '<br/>' +
+                          'Total: ' + this.point.stackTotal;
+                        }
+                      },
+
+                      plotOptions: {
+                        column: {
+                          stacking: 'normal'
+                        }
+                      },
+
+                      series: [{
+                        name: 'Male',
+                        data:   <?php echo $male ?> ,
+                        stack: 'male'
+                      }, {
+                        name: 'Female',
+                        data:   <?php echo $female ?> ,
+                        stack: 'male'
+                      }]
+                    });
+                  </script>
+                  @endsection

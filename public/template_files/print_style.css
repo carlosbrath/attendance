@@ -1,0 +1,32 @@
+  /**th 
+  {
+    vertical-align: bottom;
+    text-align: center;
+  }
+
+  th span 
+  {
+    -ms-writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+  } 
+
+   td
+  {
+    vertical-align: bottom;
+    text-align: center;
+  }
+
+  td span 
+  {
+    -ms-writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+  } */
+  .marked_late{
+  	color:red !important;
+  }
